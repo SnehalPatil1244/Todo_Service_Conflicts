@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { ITodo } from "../model/todo";
+import { Observable, of } from "rxjs";
 
 @Injectable({
     providedIn: "root"
@@ -37,5 +38,10 @@ export class todoservice {
             completed: true
         }
     ]
+
+    fetchTodos(): Observable<ITodo[]> {
+        //API Call to fetch TODOs data from DB
+        return of(this.TodoArr)
+    }
 
 }
