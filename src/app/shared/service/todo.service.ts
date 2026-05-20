@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { ITodo } from "../model/todo";
+import { ITodo, Itodores } from "../model/todo";
 import { Observable, of } from "rxjs";
 
 @Injectable({
@@ -42,6 +42,15 @@ export class todoservice {
     fetchTodos(): Observable<ITodo[]> {
         //API Call to fetch TODOs data from DB
         return of(this.TodoArr)
+    }
+
+    addtodos(todo: ITodo): Observable<Itodores> {
+        this.TodoArr.push(todo)
+        let res = {
+            msg: `New Todo Item with Id ${todo.todoid} created Successfully !!`,
+            data: todo
+        }
+        return of(res)
     }
 
 }
