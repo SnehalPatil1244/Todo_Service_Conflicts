@@ -9,20 +9,26 @@ import { TodoListComponent } from './shared/component/todo-list/todo-list.compon
 import { FormsModule } from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
+import{MatDialogModule} from '@angular/material/dialog';
+import { GetConfirmComponent } from './shared/component/get-confirm/get-confirm.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TodoDashboardComponent,
     TodoFormComponent,
-    TodoListComponent
+    TodoListComponent,
+    GetConfirmComponent,
+
+    
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

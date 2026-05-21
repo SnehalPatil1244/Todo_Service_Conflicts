@@ -1,19 +1,16 @@
-<ul class="list-group mt-5" *ngIf="TodoArr.length > 0; else notodo">
-  <li
-    *ngFor="let todo of TodoArr"
-    class="list-group-item d-flex justify-content-between"
-  >
-    <strong>
-      {{ todo.title }}
-    </strong>
 
-    <div>
-      <button (click)="edit(todo)" mat-mini-fab color="primary" class="mr-2">
-        <mat-icon>edit</mat-icon>
-      </button>
-      <button mat-mini-fab color="warn"><mat-icon>delete</mat-icon></button>
-    </div>
-  </li>
+<ul class="list-group mt-5" *ngIf="TodoArr.length > 0 ; else notodo">
+    <li *ngFor="let todo of TodoArr" class="list-group-item d-flex justify-content-between">
+        <strong>
+            {{todo.title}}
+        </strong>
+        <div>
+            <button (click)="edit(todo)" mat-mini-fab color="primary" class="mr-2"><mat-icon>edit</mat-icon></button>
+            <button
+            (click)="OnRemoveTodo(todo.todoid)"
+            mat-mini-fab color="warn"><mat-icon>delete</mat-icon></button>
+        </div>
+    </li>
 </ul>
 <ng-template #notodo>
   <p class="alert alert-info">No Todo Added Yet !!</p>

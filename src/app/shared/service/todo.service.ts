@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ITodo } from '../model/todo';
 import { Observable, of, Subject } from 'rxjs';
-
 @Injectable({
   providedIn: 'root',
 })
@@ -38,24 +37,34 @@ export class todoservice {
       completed: true,
     },
   ];
-
   fetchTodos(): Observable<ITodo[]> {
     //API Call to fetch TODOs data from DB
     return of(this.TodoArr);
   }
-
-  //edit
-
+  addtodos(todo: ITodo): Observable<Itodores> {
+        this.TodoArr.push(todo)
+        let res = {
+            msg: `New Todo Item with Id ${todo.todoid} created Successfully !!`,
+            data: todo
+        }
+        return of(res)
+    }
   Editemit$: Subject<ITodo> = new Subject();
-
-  //Update
   UpdateTodo(todo: ITodo) {
     let Uindex = this.TodoArr.findIndex((t) => t.todoid === todo.todoid);
     this.TodoArr[Uindex] = todo;
-
     return of({
       msg: `${todo.title} is Updated Successfully...!`,
       data: todo,
     });
   }
+  removeTodo(id: string): Observable<Itodores>{
+      let Get_index = this.TodoArr.findIndex(t => t.todoid === id);
+      let Remove_todo = this.TodoArr.splice(Get_index, 1)
+      return of({
+        msg: `The todo item with id ${Remove_todo[0].todoid} is removed successfully!!!`,
+        data: Remove_todo[0]
+      })
+    }
+}
 }
