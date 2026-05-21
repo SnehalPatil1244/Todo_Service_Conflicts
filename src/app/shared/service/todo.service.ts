@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { ITodo, ItodoRes } from "../model/todo";
+import { ITodo, Itodores } from "../model/todo";
 import { Observable, of } from "rxjs";
 
 @Injectable({
@@ -43,7 +43,7 @@ export class todoservice {
         return of(this.TodoArr)
     }
 
-    removeTodo(id: string): Observable<ItodoRes>{
+    removeTodo(id: string): Observable<Itodores>{
       let Get_index = this.TodoArr.findIndex(t => t.todoid === id);
       let Remove_todo = this.TodoArr.splice(Get_index, 1)
 
@@ -54,3 +54,13 @@ export class todoservice {
     }
 }
 
+    addtodos(todo: ITodo): Observable<Itodores> {
+        this.TodoArr.push(todo)
+        let res = {
+            msg: `New Todo Item with Id ${todo.todoid} created Successfully !!`,
+            data: todo
+        }
+        return of(res)
+    }
+
+}

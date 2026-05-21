@@ -4,7 +4,7 @@ export interface ITodo {
     completed: boolean;
 }
 
-export interface ItodoRes{
-      msg: string;
+export interface Itodores {
+     msg: string;
     data: ITodo;
 }
