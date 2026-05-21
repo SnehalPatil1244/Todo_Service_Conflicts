@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
-import { ITodo } from "../model/todo";
+import { ITodo, ItodoRes } from "../model/todo";
+import { Observable, of } from "rxjs";
 
 @Injectable({
     providedIn: "root"
@@ -38,4 +39,18 @@ export class todoservice {
         }
     ]
 
+    fetchTodos(): Observable<ITodo[]> {
+        return of(this.TodoArr)
+    }
+
+    removeTodo(id: string): Observable<ItodoRes>{
+      let Get_index = this.TodoArr.findIndex(t => t.todoid === id);
+      let Remove_todo = this.TodoArr.splice(Get_index, 1)
+
+      return of({
+        msg: `The todo item with id ${Remove_todo[0].todoid} is removed successfully!!!`,
+        data: Remove_todo[0]
+      })
+    }
 }
+
