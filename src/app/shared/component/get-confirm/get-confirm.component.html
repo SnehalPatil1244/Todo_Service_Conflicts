@@ -1,0 +1,11 @@
+
+<p>{{getmsg || 'Are You Sure do You Want to remove the student!!'}}</p>
+
+<div class="d-flex justify-content-between">
+    <button
+    (click)="OnClick(true)"
+    mat-raised-button color="primary">Yes</button>
+     <button
+    (click)="OnClick(false)"
+    mat-raised-button color="warn">No</button>
+</div>

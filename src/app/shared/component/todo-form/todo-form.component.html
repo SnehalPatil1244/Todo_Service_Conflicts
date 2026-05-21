@@ -4,7 +4,9 @@
         <form #todoForm="ngForm" (ngSubmit)="onTodoSubmit()">
             <div class="form-group">
                 <label for="title">Title</label>
-                <input  name="title" required ngModel type="text" class="form-control">
+                <input  name="title" 
+                required 
+                ngModel type="text" class="form-control">
             </div>
             <button [disabled]="todoForm.invalid"
             *ngIf="!isIneditMode" type="submit"  mat-raised-button color="primary" class="w-100">Add Todo</button>

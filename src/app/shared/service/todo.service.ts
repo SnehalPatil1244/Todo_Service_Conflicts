@@ -40,9 +40,19 @@ export class todoservice {
     ]
 
     fetchTodos(): Observable<ITodo[]> {
-        //API Call to fetch TODOs data from DB
         return of(this.TodoArr)
     }
+
+    removeTodo(id: string): Observable<Itodores>{
+      let Get_index = this.TodoArr.findIndex(t => t.todoid === id);
+      let Remove_todo = this.TodoArr.splice(Get_index, 1)
+
+      return of({
+        msg: `The todo item with id ${Remove_todo[0].todoid} is removed successfully!!!`,
+        data: Remove_todo[0]
+      })
+    }
+}
 
     addtodos(todo: ITodo): Observable<Itodores> {
         this.TodoArr.push(todo)
