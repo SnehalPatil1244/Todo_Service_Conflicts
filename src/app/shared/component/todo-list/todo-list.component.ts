@@ -3,12 +3,10 @@ import { ITodo } from '../../model/todo';
 import { todoservice } from '../../service/todo.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { GetConfirmComponent } from '../get-confirm/get-confirm.component';
-
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.scss']
-
 })
 export class TodoListComponent implements OnInit {
 TodoArr !: Array<ITodo>
@@ -17,7 +15,6 @@ TodoArr !: Array<ITodo>
      private _todoservice: todoservice,
      private _matdialog:MatDialog,
   ) { }
-
   ngOnInit(): void {
      this._todoservice.fetchTodos()
       .subscribe({
@@ -26,14 +23,12 @@ TodoArr !: Array<ITodo>
       })
     console.log(this.TodoArr)
   }
-
   OnRemoveTodo(id: string) {
     let matConfig = new MatDialogConfig()
     matConfig.width = '400px';
     matConfig.disableClose = true;
     matConfig.data = `Are you sure, you want to remove todo with id ${id}`
     let matRef = this._matdialog.open(GetConfirmComponent, matConfig)
-
     matRef.afterClosed()
       .subscribe((res: any) => {
         if (res) {
@@ -48,4 +43,6 @@ TodoArr !: Array<ITodo>
         }
       })
   }
+ edit(todo: ITodo) {
+    this.todoservice.Editemit$.next(todo);
 }
