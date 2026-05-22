@@ -44,5 +44,6 @@ TodoArr !: Array<ITodo>
       })
   }
  edit(todo: ITodo) {
-    this.todoservice.Editemit$.next(todo);
+    this._todoservice.Editemit$.next(todo);
+}
 }

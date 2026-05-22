@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ITodo } from '../model/todo';
+import { ITodo, Itodores } from '../model/todo';
 import { Observable, of, Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root',
@@ -67,4 +67,4 @@ export class todoservice {
       })
     }
 }
-}
+

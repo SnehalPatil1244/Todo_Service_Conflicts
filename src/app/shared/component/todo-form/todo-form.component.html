@@ -1,7 +1,7 @@
 <div class="card mt-5">
     <div class="card-body">
         <h2 class="text-center p-3 bg-primary">{{isIneditMode ? 'Update Todo' : 'Add Todo'}}</h2>
-        <form #todoForm="ngForm" (ngSubmit)="onTodoSubmit()">
+        <form #todoForm="ngForm" (ngSubmit)="onsubmit()">
             <div class="form-group">
                 <label for="title">Title</label>
                 <input  name="title" 
